@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------
-Copyright (c) 2023 Author: Jagadeesh Vasudevamurthy
+Copyright (c) 2023 Author: Pratik Hariya
 file: prime.cpp
 -----------------------------------------------------------------*/
 

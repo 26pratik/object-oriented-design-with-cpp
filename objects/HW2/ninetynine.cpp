@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------
-Copyright (c) 2019 Author: Jagadeesh Vasudevamurthy
+Copyright (c) 2019 Author: Pratik Hariya
 file: ninetynine.cpp
 -----------------------------------------------------------------*/
 

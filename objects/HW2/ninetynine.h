@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------
-Copyright (c) 2014 Author: Jagadeesh Vasudevamurthy
+Copyright (c) 2014 Author: Pratik Hariya
 file: ninetynine.h
 -----------------------------------------------------------------*/
 

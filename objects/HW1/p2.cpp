@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------
-Copyleft (c) 2023 Author: Jagadeesh Vasudevamurthy
+Copyleft (c) 2023 Author: Pratik Hariya
 file: p2.cpp
 -----------------------------------------------------------------*/
 
