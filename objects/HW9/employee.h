@@ -7,7 +7,7 @@ class employee
 {
 public:
     // constructor
-    employee(const char *name, const char *lastName, const char *SSN);
+    employee(const string &name, const string &lastName, const string &SSN);
     // copy constructor
     employee(const employee &other);
     // destructor
@@ -24,29 +24,25 @@ public:
     {
         if (this != &e)
         {
-            delete[] this->name;
-            delete[] this->lastName;
-            delete[] this->SSN;
-            this->name = new char[strlen(e.name) + 1];
-            strcpy(this->name, e.name);
-            this->lastName = new char[strlen(e.lastName) + 1];
-            strcpy(this->lastName, e.lastName);
-            this->SSN = new char[strlen(e.SSN) + 1];
-            strcpy(this->SSN, e.SSN);
+            delete name;
+            delete lastName;
+            delete SSN;
+            name = new string(*e.name);
+            lastName = new string(*e.lastName);
+            SSN = new string(*e.SSN);
         }
 
-        // Add company and salary
         if (show)
         {
-            cout << "In employee equal constructor " << this->name << " " << this->lastName << " " << this->SSN << endl;
+            cout << "In employee equal constructor " << *name << " " << *lastName << " " << *SSN << endl;
         }
 
         return *this;
     }
 
 protected:
-    char *name;
-    char *lastName;
-    char *SSN;
+    string *name;
+    string *lastName;
+    string *SSN;
 };
 #endif

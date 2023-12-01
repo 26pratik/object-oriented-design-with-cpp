@@ -5,7 +5,7 @@ class basepluscommissionemployee : public commissionemployee
 {
 public:
     // constructor
-    basepluscommissionemployee(const char *name, const char *lastName, const char *SSN, const char *company, double commission, const char *baseName, double baseSalary);
+    basepluscommissionemployee(const string &name, const string &lastName, const string &SSN, const string &company, double commission, const string &baseName, double baseSalary);
     // copy constructor
     basepluscommissionemployee(const basepluscommissionemployee &other);
     // destructor
@@ -22,16 +22,15 @@ public:
         {
 
             commissionemployee::operator=(e);
-            delete[] this->base;
-            this->base = new char[strlen(e.base) + 1];
-            strcpy(this->base, e.base);
-            this->baseSalary = e.baseSalary;
+            delete base;
+            base = new string(*e.base);
+            baseSalary = e.baseSalary;
         }
 
         if (show)
         {
-            cout << "In basepluscommissionemployee equal constructor " << this->name << " " << this->lastName << " " << this->SSN
-                 << " " << this->company << " " << this->commission << " " << this->base << " " << this->baseSalary << endl;
+            cout << "In basepluscommissionemployee equal constructor " << *this->name << " " << *this->lastName << " " << *this->SSN 
+            << " " << *this->company << " " << this->commission << " " << *this->base << " " << this->baseSalary << endl;
         }
 
         return *this;
@@ -48,6 +47,6 @@ public:
     }
 
 protected:
-    char *base;
+    string *base;
     double baseSalary;
 };

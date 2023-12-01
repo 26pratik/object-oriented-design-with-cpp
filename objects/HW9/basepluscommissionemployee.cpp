@@ -1,27 +1,26 @@
 #include "basepluscommissionemployee.h"
 
 // Constructor and inheriting from commissionemployee
-basepluscommissionemployee::basepluscommissionemployee(const char *name, const char *lastName, const char *SSN, const char *company, double commission, const char *baseName, double baseSalary) : commissionemployee(name, lastName, SSN, company, commission)
+basepluscommissionemployee::basepluscommissionemployee(const string &name, const string &lastName, const string &SSN, const string &company, double commission, const string &baseName, double baseSalary) : commissionemployee(name, lastName, SSN, company, commission)
 {
-    this->base = new char[strlen(baseName) + 1];
-    strcpy(this->base, baseName);
+    base = new string(baseName);
     this->baseSalary = baseSalary;
     if (show)
     {
-        cout << "In basepluscommissionemployee::basepluscommissionemployee constructor " << this->name << " " << this->lastName << " " << this->SSN << endl;
-        cout << this->company << " " << this->commission << " " << this->base << " " << this->baseSalary << endl;
+        cout << "In basepluscommissionemployee::basepluscommissionemployee constructor " << *this->name << " " << *this->lastName << " " << *this->SSN << std::endl;
+        std::cout << *this->company << " " << this->commission << " " << *this->base << " " << this->baseSalary << endl;
     }
 }
 
 // Copy constructor and inheriting from commissionemployee
 basepluscommissionemployee::basepluscommissionemployee(const basepluscommissionemployee &e) : commissionemployee(e)
 {
-    this->base = new char[strlen(e.base) + 1];
-    strcpy(this->base, e.base);
+    base = new string(*e.base);
     this->baseSalary = e.baseSalary;
     if (show)
     {
-        cout << "In basepluscommissionemployee copy constructor " << this->name << " " << this->lastName << " " << this->SSN << " " << this->company << " " << this->commission << " " << this->base << " " << this->baseSalary << endl;
+        cout << "In basepluscommissionemployee copy constructor " << *this->name << " " << *this->lastName << " " << *this->SSN
+             << " " << *this->company << " " << this->commission << " " << *this->base << " " << this->baseSalary << endl;
     }
 }
 
@@ -30,10 +29,10 @@ basepluscommissionemployee::~basepluscommissionemployee()
 {
     if (show)
     {
-        cout << "In basepluscommissionemployee::~basepluscommissionemployee distructor " << this->name << " " << this->lastName << endl;
-        cout << this->SSN << " " << this->company << " " << this->commission << " " << this->base << " " << this->baseSalary << endl;
+        cout << "In basepluscommissionemployee::~basepluscommissionemployee distructor " << *this->name << " " << *this->lastName << endl;
+        std::cout << *this->SSN << " " << *this->company << " " << this->commission << " " << *this->base << " " << this->baseSalary << endl;
     }
-    delete[] this->base;
+    delete base;
 }
 
 // Freind function to print out the base plus commission employee
@@ -46,6 +45,6 @@ ostream &operator<<(ostream &out, const basepluscommissionemployee &e)
 // Print function to print out the base plus commission employee
 ostream &basepluscommissionemployee::print(ostream &out) const
 {
-    out << this->name << " " << this->lastName << " " << this->SSN << " " << this->company << " " << this->commission << " " << this->base << " " << this->baseSalary;
+    out << *this->name << " " << *this->lastName << " " << *this->SSN << " " << *this->company << " " << this->commission << " " << *this->base << " " << this->baseSalary;
     return out;
 }

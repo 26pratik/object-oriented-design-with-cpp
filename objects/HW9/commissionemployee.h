@@ -8,7 +8,7 @@ class commissionemployee : public employee
 {
 public:
     // constructor
-    commissionemployee(const char *name, const char *lastName, const char *SSN, const char *company, double commission);
+    commissionemployee(const string &name, const string &lastName, const string &SSN, const string &company, double commission);
     // copy constructor
     commissionemployee(const commissionemployee &other);
     // destructor
@@ -24,16 +24,16 @@ public:
         if (this != &e)
         {
             employee::operator=(e);
-            delete[] this->company;
-            this->company = new char[strlen(e.company) + 1];
-            strcpy(this->company, e.company);
-            this->commission = e.commission;
+            delete company;
+            company = new string(*e.company);
+            commission = e.commission;
         }
 
         // Add salary
         if (show)
         {
-            cout << "In commissionemployee equal constructor " << this->name << " " << this->lastName << " " << this->SSN << " " << this->company << " " << this->commission << endl;
+            cout << "In commissionemployee equal constructor " << *this->name << " " << *this->lastName << " " << *this->SSN
+                 << " " << *this->company << " " << this->commission << std::endl;
         }
 
         return *this;
@@ -50,7 +50,7 @@ public:
     }
 
 protected:
-    char *company;
+    string *company;
     double commission;
 };
 

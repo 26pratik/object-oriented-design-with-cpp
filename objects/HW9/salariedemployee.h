@@ -7,7 +7,7 @@ class salariedemployee : public employee
 {
 public:
     // constructor
-    salariedemployee(const char *name, const char *lastName, const char *SSN, const char *company, double salary);
+    salariedemployee(const string &name, const string &lastName, const string &SSN, const string &company, double salary);
     // copy constructor
     salariedemployee(const salariedemployee &other);
     // destructor
@@ -23,22 +23,21 @@ public:
         if (this != &e)
         {
             employee::operator=(e);
-            delete[] this->company;
-            this->company = new char[strlen(e.company) + 1];
-            strcpy(this->company, e.company);
-            this->salary = e.salary;
+            delete company;
+            company = new string(*e.company);
+            salary = e.salary;
         }
 
         if (show)
         {
-            cout << "In salariedemployee equal constructor " << this->name << " " << this->lastName << " " << this->SSN << " " << this->company << " " << this->salary << endl;
+            cout << "In salariedemployee equal constructor " << *this->name << " " << *this->lastName << " " << *this->SSN << " " << *this->company << " " << this->salary << endl;
         }
 
         return *this;
     }
 
 protected:
-    char *company;
+    string *company;
     double salary;
 };
 

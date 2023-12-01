@@ -8,33 +8,27 @@ void employee::setShow(bool value)
 }
 
 // Constructor
-employee::employee(const char *first, const char *last, const char *ssn)
+employee::employee(const string &first, const string &last, const string &ssn)
 {
-    this->name = new char[strlen(first) + 1];
-    strcpy(this->name, first);
-    this->lastName = new char[strlen(last) + 1];
-    strcpy(this->lastName, last);
-    this->SSN = new char[strlen(ssn) + 1];
-    strcpy(this->SSN, ssn);
+    name = new string(first);
+    lastName = new string(last);
+    this->SSN = new string(ssn);
 
     if (show)
     {
-        cout << "In employee::employee constructor " << this->name << " " << this->lastName << " " << this->SSN << endl;
+        std::cout << "In employee::employee constructor " << *name << " " << *lastName << " " << *this->SSN << std::endl;
     }
 }
 // Copy constructor
 employee::employee(const employee &e)
 {
-    this->name = new char[strlen(e.name) + 1];
-    strcpy(this->name, e.name);
-    this->lastName = new char[strlen(e.lastName) + 1];
-    strcpy(this->lastName, e.lastName);
-    this->SSN = new char[strlen(e.SSN) + 1];
-    strcpy(this->SSN, e.SSN);
+    name = new string(*e.name);
+    lastName = new string(*e.lastName);
+    this->SSN = new string(*e.SSN);
 
     if (show)
     {
-        cout << "In employee copy constructor " << this->name << " " << this->lastName << " " << this->SSN << endl;
+        std::cout << "In employee copy constructor " << *name << " " << *lastName << " " << *SSN << std::endl;
     }
 }
 // distructor
@@ -42,11 +36,11 @@ employee::~employee()
 {
     if (show)
     {
-        cout << "In employee::~employee distructor " << this->name << " " << this->lastName << " " << this->SSN << endl;
+        std::cout << "In employee::~employee distructor " << *name << " " << *lastName << " " << *SSN << std::endl;
     }
-    delete[] this->name;
-    delete[] this->lastName;
-    delete[] this->SSN;
+    delete name;
+    delete lastName;
+    delete SSN;
 }
 // Friend function
 ostream &operator<<(ostream &out, const employee &e)
@@ -57,6 +51,6 @@ ostream &operator<<(ostream &out, const employee &e)
 // Print
 ostream &employee::print(ostream &out) const
 {
-    out << this->name << " " << this->lastName << " " << this->SSN;
+    out << *name << " " << *lastName << " " << *SSN;
     return out;
 }
